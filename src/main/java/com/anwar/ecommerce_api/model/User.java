@@ -44,7 +44,7 @@ public class User {
         this.createdAt = LocalDateTime.now();
     }
 
-    // ✅ Getters and Setters
+    //  Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -66,27 +66,3 @@ public class User {
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }
-/*
-
-        ---
-
-        ## 💡 Key Concepts Explained
-
-| Annotation | What it does |
-        |---|---|
-        | `@Entity` | Tells Spring this class is a database table |
-        | `@Table(name="users")` | Sets the table name in MySQL |
-        | `@Id` | This field is the Primary Key |
-        | `@GeneratedValue` | Auto increment ID (1, 2, 3...) |
-        | `@Column(nullable=false)` | This field cannot be empty in DB |
-        | `@Column(unique=true)` | No two users can have same email |
-        | `@Enumerated(EnumType.STRING)` | Saves role as "USER" text not a number |
-        | `@PrePersist` | Runs automatically before saving to DB |
-
-        ---
-
-        ## 📁 Your project should look like this now:
-        ```
-model/
-        ├── Role.java       ✅
-        └── User.java       ✅ */

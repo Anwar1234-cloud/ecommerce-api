@@ -28,7 +28,7 @@ public class AuthService {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // ✅ Register
+    //  Register
     public String register(RegisterRequest request) {
 
         // Check if email already exists
@@ -48,7 +48,7 @@ public class AuthService {
         return "User registered successfully!";
     }
 
-    // ✅ Login
+    //  Login
     public LoginResponse login(LoginRequest request) {
 
         // Step 1: Authenticate email and password

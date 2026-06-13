@@ -18,7 +18,7 @@ public class PaymentService {
     @Autowired
     private OrderRepository orderRepository;
 
-    // ✅ Initiate payment
+    //  Initiate payment
     public Payment initiatePayment(String email, Long orderId) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));
@@ -31,7 +31,7 @@ public class PaymentService {
         return paymentRepository.save(payment);
     }
 
-    // ✅ Confirm payment
+    //  Confirm payment
     public Payment confirmPayment(PaymentRequest request) {
         Payment payment = paymentRepository.findByOrderId(request.getOrderId())
                 .orElseThrow(() -> new RuntimeException("Payment not found!"));
@@ -49,35 +49,14 @@ public class PaymentService {
         return paymentRepository.save(payment);
     }
 
-    // ✅ Get payment by order id
+    //  Get payment by order id
     public Payment getPaymentByOrderId(Long orderId) {
         return paymentRepository.findByOrderId(orderId)
                 .orElseThrow(() -> new RuntimeException("Payment not found!"));
     }
 
-    // ✅ Get all payments (Admin)
+    //  Get all payments (Admin)
     public List<Payment> getAllPayments() {
         return paymentRepository.findAll();
     }
 }
-/*
-
-        ---
-
-        ## 📁 Your project should look like this now:
-        ```
-model/          ✅ (11 files)
-repository/     ✅ (8 files)
-security/       ✅ (4 files)
-dto/            ✅ (7 files)
-
-service/
-        ├── AuthService.java        ✅
-        ├── UserService.java        ✅
-        ├── CategoryService.java    ✅
-        ├── ProductService.java     ✅
-        ├── CartService.java        ✅
-        ├── OrderService.java       ✅
-        └── PaymentService.java     ✅
-
- */

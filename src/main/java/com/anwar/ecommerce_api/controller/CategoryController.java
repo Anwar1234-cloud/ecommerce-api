@@ -16,19 +16,19 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    // ✅ API #7 — Get all categories (Public)
+    //  API #7 — Get all categories (Public)
     @GetMapping("/all")
     public ResponseEntity<List<Category>> getAllCategories() {
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
-    // ✅ API #8 — Get category by id (Public)
+    //  API #8 — Get category by id (Public)
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
         return ResponseEntity.ok(categoryService.getCategoryById(id));
     }
 
-    // ✅ API #9 — Add category (Admin only)
+    //  API #9 — Add category (Admin only)
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<Category> addCategory(@RequestParam String name,
@@ -36,7 +36,7 @@ public class CategoryController {
         return ResponseEntity.status(201).body(categoryService.addCategory(name, description));
     }
 
-    // ✅ API #10 — Update category (Admin only)
+    //  API #10 — Update category (Admin only)
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<Category> updateCategory(@PathVariable Long id,
@@ -45,7 +45,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.updateCategory(id, name, description));
     }
 
-    // ✅ API #11 — Delete category (Admin only)
+    //  API #11 — Delete category (Admin only)
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<String> deleteCategory(@PathVariable Long id) {

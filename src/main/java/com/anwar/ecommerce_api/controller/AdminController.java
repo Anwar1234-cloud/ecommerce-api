@@ -17,13 +17,13 @@ public class AdminController {
     @Autowired
     private UserRepository userRepository;
 
-    // ✅ API #34 — Get all users
+    //  API #34 — Get all users
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-    // ✅ API #35 — Block user
+    //  API #35 — Block user
     @PutMapping("/user/block/{id}")
     public ResponseEntity<String> blockUser(@PathVariable Long id) {
         User user = userRepository.findById(id)
@@ -33,7 +33,7 @@ public class AdminController {
         return ResponseEntity.ok("User blocked successfully!");
     }
 
-    // ✅ API #36 — Unblock user
+    //  API #36 — Unblock user
     @PutMapping("/user/unblock/{id}")
     public ResponseEntity<String> unblockUser(@PathVariable Long id) {
         User user = userRepository.findById(id)

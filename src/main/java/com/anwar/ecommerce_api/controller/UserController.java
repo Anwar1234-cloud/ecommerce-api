@@ -14,7 +14,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // ✅ API #3 — Get profile
+    //  API #3 — Get profile
     @GetMapping("/profile")
     public ResponseEntity<User> getProfile(Authentication authentication) {
         String email = authentication.getName();
@@ -22,7 +22,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // ✅ API #4 — Update profile
+    //  API #4 — Update profile
     @PutMapping("/profile")
     public ResponseEntity<User> updateProfile(Authentication authentication,
                                               @RequestParam String name) {
@@ -31,7 +31,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // ✅ API #5 — Change password
+    //  API #5 — Change password
     @PutMapping("/change-password")
     public ResponseEntity<String> changePassword(Authentication authentication,
                                                  @RequestParam String oldPassword,
@@ -41,7 +41,7 @@ public class UserController {
         return ResponseEntity.ok(message);
     }
 
-    // ✅ API #6 — Delete account
+    //  API #6 — Delete account
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteAccount(Authentication authentication) {
         String email = authentication.getName();

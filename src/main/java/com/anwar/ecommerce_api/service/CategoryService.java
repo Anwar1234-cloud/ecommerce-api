@@ -14,18 +14,18 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    // ✅ Get all categories
+    //  Get all categories
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
-    // ✅ Get category by id
+    //  Get category by id
     public Category getCategoryById(Long id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found!"));
     }
 
-    // ✅ Add category (Admin)
+    //  Add category (Admin)
     public Category addCategory(String name, String description) {
         if (categoryRepository.existsByName(name)) {
             throw new ResourceNotFoundException("Category already exists!");
@@ -36,7 +36,7 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    // ✅ Update category (Admin)
+    //  Update category (Admin)
     public Category updateCategory(Long id, String name, String description) {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found!"));
@@ -45,7 +45,7 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    // ✅ Delete category (Admin)
+    //  Delete category (Admin)
     public String deleteCategory(Long id) {
         categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found!"));

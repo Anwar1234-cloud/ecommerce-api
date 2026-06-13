@@ -18,7 +18,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    // ✅ API #30 — Initiate payment
+    //  API #30 — Initiate payment
     @PostMapping("/initiate")
     public ResponseEntity<Payment> initiatePayment(Authentication authentication,
                                                    @RequestBody PaymentRequest request) {
@@ -27,19 +27,19 @@ public class PaymentController {
         );
     }
 
-    // ✅ API #31 — Confirm payment
+    //  API #31 — Confirm payment
     @PostMapping("/confirm")
     public ResponseEntity<Payment> confirmPayment(@RequestBody PaymentRequest request) {
         return ResponseEntity.ok(paymentService.confirmPayment(request));
     }
 
-    // ✅ API #32 — Get payment by order id
+    //  API #32 — Get payment by order id
     @GetMapping("/{orderId}")
     public ResponseEntity<Payment> getPayment(@PathVariable Long orderId) {
         return ResponseEntity.ok(paymentService.getPaymentByOrderId(orderId));
     }
 
-    // ✅ API #33 — Get all payments (Admin)
+    //  API #33 — Get all payments (Admin)
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN') or hasRole('SUPER_ADMIN')")
     public ResponseEntity<List<Payment>> getAllPayments() {

@@ -23,7 +23,7 @@ public class CartItem {
     @Column(nullable = false)
     private Integer quantity;
 
-    // ✅ Getters and Setters
+    //  Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

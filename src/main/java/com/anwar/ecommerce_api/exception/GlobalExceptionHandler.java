@@ -14,31 +14,31 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // ✅ Handle resource not found
+    //  Handle resource not found
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleNotFound(ResourceNotFoundException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    // ✅ Handle wrong password / email
+    //  Handle wrong password / email
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<Map<String, Object>> handleBadCredentials(BadCredentialsException ex) {
         return buildResponse("Invalid email or password!", HttpStatus.UNAUTHORIZED);
     }
 
-    // ✅ Handle access denied (wrong role)
+    //  Handle access denied (wrong role)
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Map<String, Object>> handleAccessDenied(AccessDeniedException ex) {
         return buildResponse("You do not have permission!", HttpStatus.FORBIDDEN);
     }
 
-    // ✅ Handle all other runtime errors
+    //  Handle all other runtime errors
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Map<String, Object>> handleRuntime(RuntimeException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    // ✅ Handle any other exception
+    //  Handle any other exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGeneral(Exception ex) {
         return buildResponse("Something went wrong!", HttpStatus.INTERNAL_SERVER_ERROR);

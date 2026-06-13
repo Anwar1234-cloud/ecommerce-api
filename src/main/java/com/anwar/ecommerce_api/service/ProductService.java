@@ -19,28 +19,28 @@ public class ProductService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    // ✅ Get all products
+    //  Get all products
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    // ✅ Get product by id
+    //  Get product by id
     public Product getProductById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found!"));
     }
 
-    // ✅ Get products by category
+    //  Get products by category
     public List<Product> getProductsByCategory(Long categoryId) {
         return productRepository.findByCategoryId(categoryId);
     }
 
-    // ✅ Search products by name
+    //  Search products by name
     public List<Product> searchProducts(String name) {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 
-    // ✅ Add product (Admin)
+    //  Add product (Admin)
     public Product addProduct(ProductRequest request) {
         Category category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found!"));
@@ -56,7 +56,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    // ✅ Update product (Admin)
+    //  Update product (Admin)
     public Product updateProduct(Long id, ProductRequest request) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found!"));
@@ -74,7 +74,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    // ✅ Delete product (Admin)
+    //  Delete product (Admin)
     public String deleteProduct(Long id) {
         productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found!"));

@@ -15,13 +15,13 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // ✅ Get user profile by email
+    //  Get user profile by email
     public User getProfile(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
     }
 
-    // ✅ Update user profile
+    //  Update user profile
     public User updateProfile(String email, String newName) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
@@ -29,7 +29,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // ✅ Change password
+    //  Change password
     public String changePassword(String email, String oldPassword, String newPassword) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
@@ -44,7 +44,7 @@ public class UserService {
         return "Password changed successfully!";
     }
 
-    // ✅ Delete account
+    //  Delete account
     public String deleteAccount(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));

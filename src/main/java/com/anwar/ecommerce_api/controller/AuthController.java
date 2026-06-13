@@ -15,14 +15,14 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    // ✅ API #1 — Register
+    //  API #1 — Register
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
         String message = authService.register(request);
         return ResponseEntity.status(201).body(message);
     }
 
-    // ✅ API #2 — Login
+    //  API #2 — Login
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
         LoginResponse response = authService.login(request);

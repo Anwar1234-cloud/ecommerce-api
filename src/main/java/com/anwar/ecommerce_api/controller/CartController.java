@@ -15,20 +15,20 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    // ✅ API #19 — Get cart
+    //  API #19 — Get cart
     @GetMapping
     public ResponseEntity<Cart> getCart(Authentication authentication) {
         return ResponseEntity.ok(cartService.getCart(authentication.getName()));
     }
 
-    // ✅ API #20 — Add to cart
+    //  API #20 — Add to cart
     @PostMapping("/add")
     public ResponseEntity<Cart> addToCart(Authentication authentication,
                                           @RequestBody CartRequest request) {
         return ResponseEntity.ok(cartService.addToCart(authentication.getName(), request));
     }
 
-    // ✅ API #21 — Update cart item
+    //  API #21 — Update cart item
     @PutMapping("/update/{itemId}")
     public ResponseEntity<Cart> updateCartItem(Authentication authentication,
                                                @PathVariable Long itemId,
@@ -38,7 +38,7 @@ public class CartController {
         );
     }
 
-    // ✅ API #22 — Remove item from cart
+    //  API #22 — Remove item from cart
     @DeleteMapping("/remove/{itemId}")
     public ResponseEntity<Cart> removeFromCart(Authentication authentication,
                                                @PathVariable Long itemId) {
@@ -47,7 +47,7 @@ public class CartController {
         );
     }
 
-    // ✅ API #23 — Clear cart
+    //  API #23 — Clear cart
     @DeleteMapping("/clear")
     public ResponseEntity<String> clearCart(Authentication authentication) {
         return ResponseEntity.ok(cartService.clearCart(authentication.getName()));

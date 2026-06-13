@@ -27,7 +27,7 @@ public class OrderService {
     @Autowired
     private ProductRepository productRepository;
 
-    // ✅ Place order from cart
+    //  Place order from cart
     public Order placeOrder(String email, OrderRequest request) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
@@ -82,20 +82,20 @@ public class OrderService {
         return savedOrder;
     }
 
-    // ✅ Get my orders
+    //  Get my orders
     public List<Order> getMyOrders(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
         return orderRepository.findByUserId(user.getId());
     }
 
-    // ✅ Get order by id
+    //  Get order by id
     public Order getOrderById(Long id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));
     }
 
-    // ✅ Cancel order
+    //  Cancel order
     public Order cancelOrder(Long id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));
@@ -108,12 +108,12 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    // ✅ Get all orders (Admin)
+    //  Get all orders (Admin)
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
 
-    // ✅ Update order status (Admin)
+    //  Update order status (Admin)
     public Order updateOrderStatus(Long id, OrderStatus status) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found!"));

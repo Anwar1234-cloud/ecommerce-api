@@ -21,7 +21,7 @@ public class CartService {
     @Autowired
     private UserRepository userRepository;
 
-    // ✅ Get cart of logged in user
+    //  Get cart of logged in user
     public Cart getCart(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
@@ -33,7 +33,7 @@ public class CartService {
                 });
     }
 
-    // ✅ Add item to cart
+    //  Add item to cart
     public Cart addToCart(String email, CartRequest request) {
         Cart cart = getCart(email);
 
@@ -61,7 +61,7 @@ public class CartService {
         return cartRepository.findById(cart.getId()).get();
     }
 
-    // ✅ Update cart item quantity
+    //  Update cart item quantity
     public Cart updateCartItem(String email, Long itemId, Integer quantity) {
         CartItem item = cartItemRepository.findById(itemId)
                 .orElseThrow(() -> new RuntimeException("Cart item not found!"));
@@ -70,7 +70,7 @@ public class CartService {
         return getCart(email);
     }
 
-    // ✅ Remove item from cart
+    //  Remove item from cart
     public Cart removeFromCart(String email, Long itemId) {
         cartItemRepository.findById(itemId)
                 .orElseThrow(() -> new RuntimeException("Cart item not found!"));
@@ -78,7 +78,7 @@ public class CartService {
         return getCart(email);
     }
 
-    // ✅ Clear entire cart
+    //  Clear entire cart
     public String clearCart(String email) {
         Cart cart = getCart(email);
         cart.getCartItems().clear();

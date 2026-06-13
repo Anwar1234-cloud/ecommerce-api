@@ -32,7 +32,7 @@ public class Payment {
         this.status = PaymentStatus.PENDING;
     }
 
-    // ✅ Getters and Setters
+    //  Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -23,13 +23,13 @@ public class SuperAdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    // ✅ API #37 — Get all users
+    //  API #37 — Get all users
     @GetMapping("/all-users")
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-    // ✅ API #38 — Create admin
+    //  API #38 — Create admin
     @PostMapping("/create-admin")
     public ResponseEntity<String> createAdmin(@RequestBody RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
@@ -44,7 +44,7 @@ public class SuperAdminController {
         return ResponseEntity.status(201).body("Admin created successfully!");
     }
 
-    // ✅ API #39 — Delete any user
+    //  API #39 — Delete any user
     @DeleteMapping("/delete-user/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
         userRepository.findById(id)
@@ -53,7 +53,7 @@ public class SuperAdminController {
         return ResponseEntity.ok("User deleted successfully!");
     }
 
-    // ✅ API #40 — Delete admin
+    //  API #40 — Delete admin
     @DeleteMapping("/delete-admin/{id}")
     public ResponseEntity<String> deleteAdmin(@PathVariable Long id) {
         User user = userRepository.findById(id)
@@ -65,27 +65,6 @@ public class SuperAdminController {
         return ResponseEntity.ok("Admin deleted successfully!");
     }
 }
-/*
 
-        ---
 
-        ## 📁 Your project should look like this now:
-        ```
-model/          ✅ (11 files)
-repository/     ✅ (8 files)
-security/       ✅ (4 files)
-dto/            ✅ (7 files)
-service/        ✅ (7 files)
 
-controller/
-        ├── AuthController.java         ✅
-        ├── UserController.java         ✅
-        ├── CategoryController.java     ✅
-        ├── ProductController.java      ✅
-        ├── CartController.java         ✅
-        ├── OrderController.java        ✅
-        ├── PaymentController.java      ✅
-        ├── AdminController.java        ✅
-        └── SuperAdminController.java   ✅
-
- */
